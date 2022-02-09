@@ -1,0 +1,8 @@
+.ellipsis {
+  overflow: hidden;
+  text-overflow:ellipsis;
+	/* #ifndef APP-NVUE */
+  white-space: nowrap;
+	lines:1;
+	/* #endif */
+}
