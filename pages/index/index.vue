@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<swiper class="swiper" :indicator-dots="true" :current="current">
+		<swiper class="swiper" :autoplay="true" :indicator-dots="true" :current="current">
 			<swiper-item
 				class="swiper-item"
 				v-for="(item, index) in images"
@@ -37,9 +37,9 @@ export default {
 				{
 					image: '/static/logo.png',
 					tag: '热',
-					title: '千山万水',
+					title: '千山万水千山万水千山万水千山万水千山万水千山万水千山万水千山万水',
 					tags: ['海产', '买一送一', '退险'],
-					address: '山东乳山水产经营中心',
+					address: '山东乳山水产经营中心山东乳山水产经营中心山东乳山水产经营中心',
 					distance: '100m',
 				},
 				{
@@ -106,6 +106,7 @@ export default {
 	},
 	methods: {
 		getData(reload = false) {
+			if(this.loading || this.status === 'loading') return
 			if (this.pages.page === 1) {
 				this.loading = true
 			} else {
@@ -115,8 +116,8 @@ export default {
 				if (reload) {
 					this.goods = this.dataList
 				} else {
-					if (this.pages.page === 1) this.goods = []
-					this.goods.push(...this.dataList)
+					if (this.pages.page === 1) this.goods = this.dataList
+					else this.goods.push(...this.dataList)
 				}
 				this.loading = false
 				uni.stopPullDownRefresh()
@@ -126,7 +127,7 @@ export default {
 	},
 	onPullDownRefresh() {
 		this.pages.page = 1
-		this.getData()
+		this.getData(true)
 	},
 	onReachBottom() {
 		this.pages.page += 1

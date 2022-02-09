@@ -53,6 +53,9 @@
 	padding: 24rpx;
 	box-sizing: border-box;
 	display: flex;
+	::v-deep .u-skeleton {
+		overflow: hidden;
+	}
 }
 .goods {
 	display: flex;
